@@ -6,17 +6,6 @@
   margin: 0;
 }
 
-h1, h2, h3, h4, h6, h6 {
-  font-size: inherit;
-  font-weight: bold;
-  color: black;
-}
-h2 {
-  font-size: 18px;
-  line-height: 28px;
-  margin-bottom: 12px;
-}
-
 /* Box-sizing reset method*/
 
 html, body, input, button, div {
