@@ -1,0 +1,16 @@
+/* ===== MATERIAL DESIGN ICONS ===== */
+
+.material-symbols-outlined {
+    &.line-icon {
+        font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+    }
+    &.solid-icon {
+        font-variation-settings: "FILL" 1, "wght" 400, "GRAD" 0, "opsz" 24;
+    }
+}
+
+.icon {
+    width: 24px;
+    height: 24px;
+    display: block;
+}

@@ -1,0 +1,43 @@
+@mixin h1 {
+    font-size: 48px;
+    line-height: 56px;
+    font-weight: bold;
+}
+
+@mixin h2 {
+    font-size: 36px;
+    line-height: 48px;
+    font-weight: bold;
+}
+
+@mixin h3 {
+    font-size: 24px;
+    line-height: 36px;
+    font-weight: bold;
+}
+
+@mixin h4 {
+    font-size: 18px;
+    line-height: 24px;
+    font-weight: bold;
+}
+
+@mixin large {
+    font-size: 18px;
+    line-height: 24px;
+}
+
+@mixin body {
+    font-size: 16px;
+    line-height: 28px;
+}
+
+@mixin small {
+    font-size: 14px;
+    line-height: 22px;
+}
+
+@mixin xsmall {
+    font-size: 12px;
+    line-height: 18px;
+}

@@ -1,0 +1,13 @@
+@use "../sass-utils/fonts";
+@use "../sass-utils/colors";
+
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+body {
+    font-family: "Roboto", sans-serif;
+    background-color: colors.$softsand;
+}
+
+.container {
+    width: 1000px;
+    margin: 0 auto;
+}
