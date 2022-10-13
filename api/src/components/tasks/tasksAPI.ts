@@ -1,6 +1,6 @@
 import { Router } from "express";
 import sc from "../../utils/statusCodes";
-import { model, setModel } from "../../model";
+import { model, setModel } from "../../db";
 
 const router = Router();
 
