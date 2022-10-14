@@ -1,0 +1,9 @@
+@use "../sass-utils/colors";
+.overlay {
+    background-color: colors.$black-a30;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+}
