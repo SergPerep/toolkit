@@ -1,5 +1,14 @@
 import sc from "../../utils/statusCodes";
 // Use these to specify behavior of custom error handler middleware
+
+const getPropNameAndValue = <T = unknown>(obj: {
+  [key: string]: T;
+}): [string, T] => {
+  const name = Object.keys(obj)[0];
+  const value = obj[name];
+  return [name, value];
+};
+
 export class AppError extends Error {
   statusCode: number;
   status: string;
@@ -17,16 +26,17 @@ export class AppError extends Error {
 }
 
 export class EmptyFieldError extends AppError {
-  constructor(propName: string) {
-    const message = `Empty field: ${propName}`;
-    super(message, 400, "fail");
+  constructor(obj: { [key: string]: unknown }) {
+    const [propName] = getPropNameAndValue(obj);
+    super(`Empty field: ${propName}`, sc.BAD_REQUEST, "fail");
   }
 }
 
 export class WrongTypeError extends AppError {
-  constructor(propName: string, prop: unknown, expType: string) {
-    const message = `Expected ${propName} to be a ${expType} instead of a ${typeof prop}`;
-    super(message, 400, "fail");
+  constructor(obj: { [key: string]: unknown }, expType: string) {
+    const [propName, propValue] = getPropNameAndValue(obj);
+    const message = `Expected ${propName} to be a ${expType} instead of a ${typeof propValue}`;
+    super(message, sc.BAD_REQUEST, "fail");
   }
 }
 
@@ -37,7 +47,8 @@ export class RecordNotFoundError extends AppError {
 }
 
 export class CannotBeNegativeError extends AppError {
-  constructor(propName: string, propValue: number) {
+  constructor(obj: { [key: string]: number }) {
+    const [propName, propValue] = getPropNameAndValue(obj);
     super(
       `'${propName}' cannot be negative. Got ${propValue}`,
       sc.BAD_REQUEST,
