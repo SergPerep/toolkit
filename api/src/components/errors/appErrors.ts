@@ -6,11 +6,11 @@ export class AppError extends Error {
   constructor(
     message = "Internal server error",
     statusCode = 500,
-    name = "AppError",
-    status = "error"
+    status = "error",
+    name = ""
   ) {
     super(message);
-    this.name = name;
+    this.name = name || this.constructor.name;
     this.statusCode = statusCode;
     this.status = status;
   }
@@ -19,25 +19,20 @@ export class AppError extends Error {
 export class EmptyFieldError extends AppError {
   constructor(propName: string) {
     const message = `Empty field: ${propName}`;
-    super(message, 400, "EmptyFieldError", "fail");
+    super(message, 400, "fail");
   }
 }
 
 export class WrongTypeError extends AppError {
   constructor(propName: string, prop: unknown, expType: string) {
     const message = `Expected ${propName} to be a ${expType} instead of a ${typeof prop}`;
-    super(message, 400, "WrongTypeError", "fail");
+    super(message, 400, "fail");
   }
 }
 
 export class RecordNotFoundError extends AppError {
   constructor(recordId: string) {
-    super(
-      `Record with id='${recordId}' was not found`,
-      sc.NOT_FOUND,
-      "RecordNotFoundError",
-      "fail"
-    );
+    super(`Record with id='${recordId}' was not found`, sc.NOT_FOUND, "fail");
   }
 }
 
@@ -46,7 +41,6 @@ export class CannotBeNegativeError extends AppError {
     super(
       `'${propName}' cannot be negative. Got ${propValue}`,
       sc.BAD_REQUEST,
-      "CannotBeNegativeError",
       "fail"
     );
   }
